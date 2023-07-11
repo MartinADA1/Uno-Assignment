@@ -27,7 +27,7 @@ class Hand:
                 text_color = "white"
             else:
                 text_color = text_color.lower()
-            print(colored(str(i+1) + ". " + self.cardsstr[i], text_color))
+            print(colored("[" + str(i+1) + "]. " + self.cardsstr[i], text_color))
 
     def single_card(self, place):
         return self.cards[place - 1]
