@@ -2,7 +2,8 @@ import random
 import time
 from card import Card
 from deck import Deck
-from hand import Hand   
+from hand import Hand
+from termcolor import colored   
 
 #Funciton to randomly select who starts first
 def choose_first():

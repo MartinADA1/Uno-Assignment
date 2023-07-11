@@ -1,3 +1,5 @@
+from termcolor import colored
+
 class Hand:
 
     def __init__(self):
@@ -20,7 +22,12 @@ class Hand:
 
     def cards_in_hand(self):
         for i in range(len(self.cardsstr)):
-            print(f' {i + 1}.{self.cardsstr[i]}')
+            text_color = self.cards[i].color
+            if text_color == None:
+                text_color = "white"
+            else:
+                text_color = text_color.lower()
+            print(colored(str(i+1) + ". " + self.cardsstr[i], text_color))
 
     def single_card(self, place):
         return self.cards[place - 1]
