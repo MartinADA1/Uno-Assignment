@@ -48,11 +48,11 @@ def win_check(hand):
 def playerVplayer():
     while True:
 
-        print('\nWelcome to UNO! Finish your cards first to win')
+        print('\nWelcome to UNO! Finish your cards first to win!')
         time.sleep(1)
         
-        p1_name = input("Player 1, please input your name: ")
-        p2_name = input("Player 2, please input your name: ")
+        p1_name = input("\nPlayer 1, please enter your name: ")
+        p2_name = input("Player 2, please enter your name: ")
 
         deck = Deck()
         deck.shuffle()
@@ -69,7 +69,7 @@ def playerVplayer():
         if top_card.cardtype != 'number':
             while top_card.cardtype != 'number':
                 top_card = deck.deal()
-        print('\nStarting Card is: {}'.format(top_card))
+        print('\nThe starting card is: {}'.format(top_card))
         time.sleep(1)
         playing = True
 
@@ -83,16 +83,17 @@ def playerVplayer():
         while playing:
 
             if turn == 'Player 1':
-                print('\nTop card is: ' + str(top_card))
+                print('\nThe top card is: ' + str(top_card))
                 print('Your cards: ')
                 player1_hand.cards_in_hand()
-                player1_choice = input("\nPlay or Draw? (p/d): ")
+                player1_choice = input("\nWould you like to Play or Draw? (p/d): ")
                 if player1_choice == 'p':
-                    pos = int(input('Enter index of card: '))
+                    pos = int(input('Enter number of the card you want to play: '))
                     temp_card = player1_hand.single_card(pos)
                     if single_card_check(top_card, temp_card) == True:
                         if temp_card.cardtype == 'number':
                             top_card = player1_hand.remove_card(pos)
+                            print("\n" + p1_name + f" has played {temp_card}")
                             turn = 'Player 2'
                         else:
                             if temp_card.rank == 'Skip' or temp_card.rank == 'Reverse':
@@ -107,14 +108,14 @@ def playerVplayer():
                                 for i in range(4):
                                     player2_hand.add_card(deck.deal())
                                 top_card = player1_hand.remove_card(pos)
-                                draw4color = input('Change color to (enter in caps): ')
+                                draw4color = input('Enter which color you want to change to: ')
                                 if draw4color != draw4color.upper():
                                     draw4color = draw4color.upper()
                                 top_card.color = draw4color
                                 turn = 'Player 1'
                             elif temp_card.rank == 'Wild':
                                 top_card = player1_hand.remove_card(pos)
-                                wildcolor = input('Change color to (enter in caps): ')
+                                wildcolor = input('Enter which color you want to change to: ')
                                 if wildcolor != wildcolor.upper():
                                     wildcolor = wildcolor.upper()
                                 top_card.color = wildcolor
@@ -138,10 +139,10 @@ def playerVplayer():
                     break
 
             if turn == 'Player 2':
-                print('\nTop card is: ' + str(top_card))
+                print('\nThe top card is: ' + str(top_card))
                 print('Your cards: ')
                 player2_hand.cards_in_hand()
-                player2_choice = input("\nPlay or Draw? (p/d): ")
+                player2_choice = input("\nWould you like to Play or Draw? (p/d): ")
                 if player2_choice == 'h':
                     pos = int(input('Enter index of card: '))
                     temp_card = player2_hand.single_card(pos)
@@ -162,14 +163,14 @@ def playerVplayer():
                                 for i in range(4):
                                     player1_hand.add_card(deck.deal())
                                 top_card = player2_hand.remove_card(pos)
-                                draw4color = input('Change color to (enter in caps): ')
+                                draw4color = input('Enter which color you want to change to: ')
                                 if draw4color != draw4color.upper():
                                     draw4color = draw4color.upper()
                                 top_card.color = draw4color
                                 turn = 'Player 2'
                             elif temp_card.rank == 'Wild':
                                 top_card = player2_hand.remove_card(pos)
-                                wildcolor = input('Change color to (enter in caps): ')
+                                wildcolor = input('Enter which color you want to change to: ')
                                 if wildcolor != wildcolor.upper():
                                     wildcolor = wildcolor.upper()
                                 top_card.color = wildcolor
@@ -203,10 +204,10 @@ def playerVplayer():
 def playerVAI():
     while True:
 
-        print('\nWelcome to UNO! Finish your cards first to win')
+        print('\nWelcome to UNO! Finish your cards first to win!')
         time.sleep(1)
 
-        player_name = input("Please input your name: ")
+        player_name = input("Please enter your name: ")
         pc_name = "Computer"
 
         deck = Deck()
@@ -224,7 +225,7 @@ def playerVAI():
         if top_card.cardtype != 'number':
             while top_card.cardtype != 'number':
                 top_card = deck.deal()
-        print('\nStarting Card is: {}'.format(top_card))
+        print('\nThe starting card is: {}'.format(top_card))
         time.sleep(1)
         playing = True
 
@@ -238,12 +239,12 @@ def playerVAI():
         while playing:
 
             if turn == 'Player':
-                print('\nTop card is: ' + str(top_card))
+                print('\nThe top card is: ' + str(top_card))
                 print('Your cards: ')
                 player_hand.cards_in_hand()
-                choice = input("\nPlay or Draw? (h/p): ")
+                choice = input("\nWould you like to Play or Draw? (p/d): ")
                 if choice == 'p':
-                    pos = int(input('Enter index of card: '))
+                    pos = int(input('Enter number of the card you want to play: '))
                     temp_card = player_hand.single_card(pos)
                     if single_card_check(top_card, temp_card) == True:
                         if temp_card.cardtype == 'number':
@@ -262,14 +263,14 @@ def playerVAI():
                                 for i in range(4):
                                     pc_hand.add_card(deck.deal())
                                 top_card = player_hand.remove_card(pos)
-                                draw4color = input('Change color to (enter in caps): ')
+                                draw4color = input('Enter which color you want to change to: ')
                                 if draw4color != draw4color.upper():
                                     draw4color = draw4color.upper()
                                 top_card.color = draw4color
                                 turn = 'Player'
                             elif temp_card.rank == 'Wild':
                                 top_card = player_hand.remove_card(pos)
-                                wildcolor = input('Change color to (enter in caps): ')
+                                wildcolor = input('Enter which color you want to change to: ')
                                 if wildcolor != wildcolor.upper():
                                     wildcolor = wildcolor.upper()
                                 top_card.color = wildcolor
@@ -296,7 +297,7 @@ def playerVAI():
                 temp_card = full_hand_check(pc_hand, top_card)
                 time.sleep(1)
                 if temp_card != 'no card':
-                    print(f'\n' + pc_name + ' throws: {temp_card}')
+                    print('\n' + pc_name + f' throws: {temp_card}')
                     time.sleep(1)
                     if temp_card.cardtype == 'number':
                         top_card = temp_card
@@ -329,7 +330,7 @@ def playerVAI():
                     time.sleep(1)
                     temp_card = deck.deal()
                     if single_card_check(top_card, temp_card):
-                        print(f'\n' + pc_name + ' throws: {temp_card}')
+                        print('\n' + pc_name + f' throws: {temp_card}')
                         time.sleep(1)
                         if temp_card.cardtype == 'number':
                             top_card = temp_card
@@ -365,7 +366,7 @@ def playerVAI():
                 print('\n' + pc_name + ' has {} cards remaining'.format(pc_hand.no_of_cards()))
                 time.sleep(1)
                 if win_check(pc_hand) == True:
-                    print('\nThe' + pc_name + ' has WON!!')
+                    print('\nThe ' + pc_name + ' has WON!!')
                     playing = False
 
         new_game = input('Would you like to play again? (y/n)')
@@ -379,10 +380,11 @@ def playerVAI():
 #The gaming loop
 while True:
 
-    print("Main Menu")
-    print("[1]. Player VS. Computer")
-    print("[2]. Player VS. Player")
-    print("[3]. Quit")
+    print(15*"-" + " Martin's UNO Main Menu " + 15*"-" + "\n\n")
+    print(" [1]. Player VS. Computer "+ "\n")
+    print(" [2]. Player VS. Player "+ "\n")
+    print(" [3]. Quit "+ "\n\n")
+    print(54*"-")
 
     option = int(input("Please select an option: "))
 
