@@ -79,15 +79,12 @@ while True:
                         top_card = player_hand.remove_card(pos)
                         turn = 'Pc'
                     else:
-                        if temp_card.rank == 'Skip':
-                            turn = 'Player'
-                            top_card = player_hand.remove_card(pos)
-                        elif temp_card.rank == 'Reverse':
+                        if temp_card.rank == 'Skip' or temp_card.rank == 'Reverse':
                             turn = 'Player'
                             top_card = player_hand.remove_card(pos)
                         elif temp_card.rank == 'Draw2':
-                            pc_hand.add_card(deck.deal())
-                            pc_hand.add_card(deck.deal())
+                            for i in range(2):
+                                pc_hand.add_card(deck.deal())
                             top_card = player_hand.remove_card(pos)
                             turn = 'Player'
                         elif temp_card.rank == 'Draw4':
@@ -138,8 +135,8 @@ while True:
                         turn = 'Pc'
                         top_card = temp_card
                     elif temp_card.rank == 'Draw2':
-                        player_hand.add_card(deck.deal())
-                        player_hand.add_card(deck.deal())
+                        for i in range(2):
+                            player_hand.add_card(deck.deal())
                         top_card = temp_card
                         turn = 'Pc'
                     elif temp_card.rank == 'Draw4':
