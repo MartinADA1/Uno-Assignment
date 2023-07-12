@@ -316,20 +316,20 @@ def playerVAI():
                     if single_card_check(top_card, temp_card) == True:
                         if temp_card.cardtype == 'number':
                             top_card = player_hand.remove_card(pos)
-                            print("\nYou played {temp_card}")
+                            print(f"\nYou played {temp_card}")
                             time.sleep(1)
                             turn = 'Pc'
                         else:
                             if temp_card.rank == 'Skip' or temp_card.rank == 'Reverse':
                                 turn = 'Player'
                                 top_card = player_hand.remove_card(pos)
-                                print("\nYou played {temp_card}")
+                                print(f"\nYou played {temp_card}")
                                 time.sleep(1)
                             elif temp_card.rank == 'Draw2':
                                 for i in range(2):
                                     pc_hand.add_card(deck.deal())
                                 top_card = player_hand.remove_card(pos)
-                                print("\nYou played {temp_card}")
+                                print(f"\nYou played {temp_card}")
                                 time.sleep(1)
                                 turn = 'Player'
                             elif temp_card.rank == 'Draw4':
