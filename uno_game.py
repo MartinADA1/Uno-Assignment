@@ -1,5 +1,6 @@
 import random
 import time
+import os
 from card import Card
 from hand import Hand
 from deck import Deck
