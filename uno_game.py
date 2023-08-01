@@ -7,6 +7,9 @@ from deck import Deck
 from termcolor import colored
 
 
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 #Funciton to randomly select who starts first (Player Vs. AI)
 def choose_first():
     if random.randint(0,1)==0:
